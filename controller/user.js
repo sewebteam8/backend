@@ -16,7 +16,6 @@ export const signUp = async (request, response) => {
         });
 
         if (exist) {
-            
             return response.status(500).json('user already exists');
         }
         

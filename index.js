@@ -9,7 +9,7 @@ import Routes from './routes/Routes.js'
 dotenv.config();
 const app = express();
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 7000
 app.disable('x-powered-by')
 
 app.use(cors())
@@ -18,7 +18,7 @@ app.use(urlencoded({
     extended: true
 }))
 app.use(morgan('dev'))
-app.use('/', Routes);
+app.use('/services', Routes);
 const start = async () => {
     try {
         await Connection();
