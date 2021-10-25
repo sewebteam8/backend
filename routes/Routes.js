@@ -5,7 +5,7 @@ const route = express.Router();
 
 route.post('/signup', signUp);
 route.get('/users', getAllUser);
-route.get('/login',logIn)
+route.post('/login',logIn)
 // route.post('/conversation/add', newConversation);
 // route.post('/conversation/get', getConversation);
 route.post('/enqMail', enquiryMail);
