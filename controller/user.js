@@ -3,10 +3,10 @@ import User from "../modals/User.js";
 
 export const signUp = async (request, response) => {
    
-    if (!request.body.name || !request.body.email || !request.body.Id || !request.body.password)
+    if (!request.body.name || !request.body.email ||!request.body.password)
     {
         return response.status(400).send({
-            message: 'need email ,password,id,name'
+            message: 'need email ,password,name'
         })
     }
     try {
