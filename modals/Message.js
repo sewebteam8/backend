@@ -1,28 +1,19 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose from 'mongoose';
 
-// Create Schema for Users
-const MessageSchema = new Schema({
-    conversation: {
-        type: Schema.Types.ObjectId,
-        ref: 'conversations',
+const MessageSchema = new mongoose.Schema({
+    conversationId: {
+        type: String
     },
-    to: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
+    sender: {
+        type: String
     },
-    from: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
-    },
-    body: {
-        type: String,
-        required: true,
-    },
-    date: {
-        type: String,
-        default: Date.now,
-    },
-});
+    text: {
+        type: String
+    }
+}, {
+    timestamps: true
+})
 
-module.exports = Message = mongoose.model('messages', MessageSchema);
+const message = mongoose.model('Message', MessageSchema);
+
+export default message;
