@@ -1,5 +1,5 @@
 import User from "../modals/User.js";
-
+import jwt from 'jsonwebtoken';
 
 export const signUp = async (request, response) => {
    
@@ -21,7 +21,9 @@ export const signUp = async (request, response) => {
         
         const newUser = new User(request.body);
         await newUser.save();
-        return response.status(200).json(newUser);
+        const token = jwt.sign({ id: newUser._id }, "studywellraj", { expiresIn: 3600 });
+        if (!token) throw Error('Couldnt sign the token');
+        return response.status(200).json({ token,newUser });
     } catch (error) {
         console.log(error)
         return response.status(500).json(error);
@@ -63,11 +65,24 @@ export const logIn = async (request, response) =>
        if (!match) {
            return response.status(401).send(invalid)
        }
-
+        const token = jwt.sign({ id: user._id },"studywellraj", {
+        expiresIn: 3600
+        });
       
-       return response.status(201).send({user})
+       return response.status(201).send({token,user})
    } catch (e) {
        console.error(e)
        response.status(500).end()
    }
+}
+export const getUser = async (request, response) => {
+    try {
+        const user = await User.findById(request.user.id).select('-password');
+        if (!user) throw Error('User does not exist');
+        response.json(user);
+    } catch (e) {
+        response.status(400).json({
+            msg: e.message
+        });
+    }
 }

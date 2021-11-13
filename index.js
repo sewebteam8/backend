@@ -6,6 +6,7 @@ import  morgan from 'morgan'
 import dotenv from 'dotenv';
 import Connection from './db/Connection.js'
 import Routes from './routes/Routes.js'
+import  Socketconnection from './socket.js'
 dotenv.config();
 const app = express();
 
@@ -25,6 +26,7 @@ const start = async () => {
         app.listen(PORT, () => {
             console.log(`Server is running successfully on PORT ${PORT}`)
         })
+        Socketconnection();
     } catch (e) {
         console.error(e)
     }
