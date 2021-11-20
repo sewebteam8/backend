@@ -5,6 +5,7 @@ import json from 'body-parser';
 import  morgan from 'morgan'
 import dotenv from 'dotenv';
 import Connection from './db/Connection.js'
+import BlogConnection from './db/blog.js'
 import Routes from './routes/Routes.js'
 dotenv.config();
 const app = express();
@@ -19,12 +20,16 @@ app.use(urlencoded({
 }))
 app.use(morgan('dev'))
 app.use('/services', Routes);
+
 const start = async () => {
     try {
-        await Connection();
+        // await Connection();
         app.listen(PORT, () => {
             console.log(`Server is running successfully on PORT ${PORT}`)
         })
+
+        await BlogConnection();
+
     } catch (e) {
         console.error(e)
     }
