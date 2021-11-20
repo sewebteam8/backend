@@ -1,5 +1,4 @@
 import express from 'express';
-import { signUp, logIn,getAllUser } from '../controller/user.js';
 import { newPost, updatePost, deletePost, getPost, getbyID } from '../controller/blog.js';
 import { signUp, logIn, getAllUser,getUser } from '../controller/user.js';
 import { newConversation,getConversation } from '../controller/conversation.js';
