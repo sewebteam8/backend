@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 import Connection from './db/Connection.js'
 import BlogConnection from './db/blog.js'
 import Routes from './routes/Routes.js'
+import  Socketconnection from './socket.js'
 dotenv.config();
 const app = express();
 
@@ -28,7 +29,10 @@ const start = async () => {
             console.log(`Server is running successfully on PORT ${PORT}`)
         })
 
+
         await BlogConnection();
+
+        Socketconnection();
 
     } catch (e) {
         console.error(e)

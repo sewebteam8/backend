@@ -2,10 +2,7 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
-     Id: {
-         type: String,
-         required: true
-    },
+    
     imageUrl: {
         type: String,
        
