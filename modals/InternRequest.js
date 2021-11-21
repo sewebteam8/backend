@@ -10,7 +10,6 @@ const InternRequestSchema = new mongoose.Schema({
     },
     mode: {
         type: String,
-        required: true,
     },
     city: { type: String },
     desc: { type: String },
@@ -20,5 +19,6 @@ const InternRequestSchema = new mongoose.Schema({
     stipend: { type: String },
 });
 const InternRequest = mongoose.model("InternRequest", InternRequestSchema);
+export default InternRequest;
     
     

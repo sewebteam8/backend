@@ -29,3 +29,4 @@ const RoomPartnerFindSchema = new mongoose.Schema({
     },
 });
 const RoomPartnerFind = mongoose.model('RoomPartnerFind', RoomPartnerFindSchema);
+export default RoomPartnerFind;
