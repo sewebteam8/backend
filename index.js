@@ -7,7 +7,9 @@ import dotenv from 'dotenv';
 import Connection from './db/Connection.js'
 import BlogConnection from './db/blog.js'
 import Routes from './routes/Routes.js'
+import fileUpload from 'express-fileupload';
 import  Socketconnection from './socket.js'
+
 dotenv.config();
 const app = express();
 
@@ -16,6 +18,7 @@ app.disable('x-powered-by')
 
 app.use(cors())
 app.use(json())
+app.use(fileUpload());
 app.use(urlencoded({
     extended: true
 }))
