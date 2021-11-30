@@ -9,13 +9,14 @@ export const postupload = async (req,res) => {
             }
             else{
                 var obj = {
-                    // name : req.body.name,
-                    // name : req.body.title,
+                    email : req.body.email,
                     name : pp.name,
+                    tags : "abc",
                 }
                 
-                const post = Pic(req.body);
-		        const addedpost = new Pic(req.body).save();
+                const post = Pic(obj);
+                console.log(obj);
+		        const addedpost = new Pic(obj).save();
                 res.status(200).json({message : "added"})
             }
         });
@@ -28,7 +29,14 @@ export const postupload = async (req,res) => {
 
 export const getupload = async (req,res) => {
 	try{
-		
+		const pics = await Pic.find();
+		if(pics.length == 0){
+			res.satus(404).json({message : "pics no found"});
+			return;
+		}
+		else{
+			res.status(200).json(pics);
+		}
 	}
 	catch(error){
 		res.status(400).json({message : "failed"})

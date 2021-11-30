@@ -24,16 +24,17 @@ app.use(urlencoded({
 }))
 app.use(morgan('dev'))
 app.use('/services', Routes);
+app.use(express.static('./public/pic'))
 
 const start = async () => {
     try {
-        await Connection();
+        // await Connection();
         app.listen(PORT, () => {
             console.log(`Server is running successfully on PORT ${PORT}`)
         })
 
 
-        // await BlogConnection();
+        await BlogConnection();
 
         Socketconnection();
 
