@@ -27,7 +27,7 @@ route.post('/conversation/get', getConversation);
 route.post('/message/add', addMessage);
 route.get('/message/get/:id', getMessage);
 
-route.get('/upload', getupload);
+route.get('/uploadpic', getupload);
 route.post('/upload', postupload);
 
 
