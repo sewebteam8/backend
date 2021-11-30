@@ -23,4 +23,4 @@ const ExamFormDataSchema = new mongoose.Schema({
     }
 });
 const ExamFormData = mongoose.model('ExamFormData', ExamFormDataSchema);
-    
+export default ExamFormData;

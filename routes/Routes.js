@@ -3,7 +3,9 @@ import { newPost, updatePost, deletePost, getPost, getbyID } from '../controller
 import { signUp, logIn, getAllUser,getUser } from '../controller/user.js';
 import { newConversation,getConversation } from '../controller/conversation.js';
 import { enquiryMail } from '../controller/contact.js';
+import { postupload, getupload } from '../controller/pic.js';
 import { addMessage, getMessage } from '../controller/message.js';
+import { addFindIntern,addFindRoomPartner,addExamRequestForm } from '../controller/findbuddy.js';
 import auth from '../middleware/auth.js';
 const route = express.Router();
 
@@ -24,5 +26,13 @@ route.post('/conversation/get', getConversation);
 
 route.post('/message/add', addMessage);
 route.get('/message/get/:id', getMessage);
+
+route.get('/upload', getupload);
+route.post('/upload', postupload);
+
+
+route.post('/findintern', addFindIntern);
+route.post('/findroompartner', addFindRoomPartner);
+route.post('/examrequestform', addExamRequestForm);
 
 export default route;
