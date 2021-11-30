@@ -24,13 +24,13 @@ app.use('/services', Routes);
 
 const start = async () => {
     try {
-        // await Connection();
+        await Connection();
         app.listen(PORT, () => {
             console.log(`Server is running successfully on PORT ${PORT}`)
         })
 
 
-        await BlogConnection();
+        // await BlogConnection();
 
         Socketconnection();
 
