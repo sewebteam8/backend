@@ -1,26 +1,45 @@
 import mongoose from 'mongoose';
 const ExamFormDataSchema = new mongoose.Schema({
-    examId: {
-        type: String
+    examineeName: {
+        type: String,
+        required: true
     },
     examName: {
-        type: String
+        type: String,
+        required: true
+    },
+
+    examineeAge: {
+        type: Number,
+        required: true
+    },
+    examCityName: {
+        type: String,
+        required: true
     },
     examDate: {
-        type: String
+        type: Date,
+        required: true
     },
     examTime: {
-        type: String
+        type: String,
+        required: true
     },
     examDuration: {
-        type: String
+        type: Number,
+        required: true
     },
+
     examVenue: {
-        type: String
+        type: String,
+        required: true
     },
-    examFee: {
-        type: String
+    examineeAddress: {
+        type: String,
+        required: true
     }
 });
+
+
 const ExamFormData = mongoose.model('ExamFormData', ExamFormDataSchema);
 export default ExamFormData;
