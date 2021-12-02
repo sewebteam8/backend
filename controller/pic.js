@@ -1,19 +1,24 @@
 import Pic from "../modals/pic.js";
 
-export const postupload = async (req,res) => {
+export const postupload = async (req, res) => {
+    console.log("postupload");
 	try{
+        console.log("postupload1");
         var pp = req.files.pic;
         pp.mv('public/pic/' + pp.name, function (err){
             if(err){
+                console.log("postupload2");
                 res.status(400).json({message : "failed"})
             }
             else{
+                console.log("postupload3");
                 var obj = {
                     email : req.body.email,
                     name : pp.name,
                     tags : "abc",
                 }
                 
+                console.log("postupload4");
                 const post = Pic(obj);
                 console.log(obj);
 		        const addedpost = new Pic(obj).save();
