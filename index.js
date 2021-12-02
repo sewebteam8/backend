@@ -5,7 +5,6 @@ import json from 'body-parser';
 import  morgan from 'morgan'
 import dotenv from 'dotenv';
 import Connection from './db/Connection.js'
-import BlogConnection from './db/blog.js'
 import Routes from './routes/Routes.js'
 import fileUpload from 'express-fileupload';
 import  Socketconnection from './socket.js'
@@ -33,8 +32,6 @@ const start = async () => {
             console.log(`Server is running successfully on PORT ${PORT}`)
         })
 
-
-        // await BlogConnection();
 
         Socketconnection();
 

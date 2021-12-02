@@ -30,24 +30,26 @@ const Socketconnection = async () => {
             socket.on("addUser", userId => {
                 addUser(userId, socket.id);
                 io.emit("getUsers", users);
+                console.log(userId);
+               
             })
             console.log(users);
             //send message
-            socket.on('sendMessage', ({ senderId, receiverId, text }) => {
-                const user = getUser(receiverId);
-                io.to(user.socketId).emit('getMessage', {
-                    senderId, text
-                })
+            socket.on("sendMessage", (senderId, receiverId, text) => {
+                const receiver = getUser(receiverId);
+                if (receiver) {
+                    io.to(receiver.socketId).emit("getMessage", senderId, text);
+                }
             })
-
-            //disconnect
-            socket.on('disconnect', () => {
-                console.log('user disconnected');
+            
+            socket.on("disconnect", () => {
                 removeUser(socket.id);
-                io.emit('getUsers', users);
+                console.log('user disconnected')
             })
-    
+            
+        
         })
+        
     }
     catch (error) {
         console.error(error);
