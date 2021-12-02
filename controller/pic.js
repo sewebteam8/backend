@@ -5,7 +5,7 @@ export const postupload = async (req, res) => {
 	try{
         console.log("postupload1");
         var pp = req.files.pic;
-        pp.mv('public/pic/' + pp.name, function (err){
+        pp.mv('../public/pic/' + pp.name, function (err){
             if(err){
                 console.log("postupload2");
                 res.status(400).json({message : "failed"})
