@@ -2,7 +2,6 @@ import User from "../modals/User.js";
 import jwt from 'jsonwebtoken';
 
 export const signUp = async (request, response) => {
-    console.log(request.body);
     if (!request.body.name || !request.body.email ||!request.body.password)
     {
         return response.status(400).send({
