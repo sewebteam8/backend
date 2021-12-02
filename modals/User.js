@@ -18,6 +18,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    collagename: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true
+    }
+
 })
 userSchema.pre('save', function (next) {
     console.log(this.isModified)
