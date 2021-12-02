@@ -5,6 +5,7 @@ export const postupload = async (req, res) => {
 	try{
         console.log("postupload1");
         var pp = req.files.pic;
+        console.log("postupload21");
         pp.mv('../public/pic/' + pp.name, function (err){
             if(err){
                 console.log("postupload2");
@@ -15,7 +16,7 @@ export const postupload = async (req, res) => {
                 var obj = {
                     email : req.body.email,
                     name : pp.name,
-                    tags : "abc",
+                    tags : req.body.tags,
                 }
                 
                 console.log("postupload4");
