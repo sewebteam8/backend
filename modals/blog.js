@@ -5,6 +5,7 @@ const blogSchema = new mongoose.Schema({
     message : String,
     tags : String,
     title : String,
+    email : String,
     },
     {
         timestamps: true
