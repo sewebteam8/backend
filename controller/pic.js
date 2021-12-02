@@ -1,14 +1,10 @@
 import Pic from "../modals/pic.js";
 
 export const postupload = async (req, res) => {
-    console.log("postupload");
 	try{
-        console.log("postupload1");
         var pp = req.files.pic;
-        console.log("postupload21");
-        pp.mv('../public/pic/' + pp.name, function (err){
+        pp.mv('public/pic/' + pp.name, function (err){
             if(err){
-                console.log("postupload2");
                 res.status(400).json({message : "failed"})
             }
             else{
